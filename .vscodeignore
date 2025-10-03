@@ -1,7 +1,0 @@
-**/.vscode/**
-**/.git/**
-**/.github/**
-**/node_modules/**
-src/**
-**/*.map
-**/*.ts
