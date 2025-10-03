@@ -1,0 +1,72 @@
+{
+  "name": "vscode-xml-path-colors",
+  "displayName": "XML Path Colors",
+  "description": "Color specific XML element names based on ancestor path (e.g., App/HubDefs/HubDef.DirectiveSets).",
+  "publisher": "samhoff",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:xml",
+    "onCommand:xmlPathColors.reload"
+  ],
+  "icon": "media/icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "xmlPathColors.reload",
+        "title": "XML Path Colors: Reload"
+      }
+    ],
+    "configuration": {
+      "title": "XML Path Colors",
+      "properties": {
+        "xmlPathColors.rules": {
+          "type": "array",
+          "default": [
+            {
+              "path": "App/HubDefs",
+              "color": "#8844ff"
+            },
+            {
+              "path": "App/HubDefs/HubDef.DirectiveSets",
+              "color": "#ff5599"
+            }
+          ],
+          "description": "Map XML element ancestor paths to colors. Provide 'foreground' and/or 'background'.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "foreground": {
+                "type": "string"
+              },
+              "background": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.93.0",
+    "@types/node": "^20.14.10",
+    "typescript": "^5.5.4",
+    "vsce": "^2.15.0"
+  }
+}
